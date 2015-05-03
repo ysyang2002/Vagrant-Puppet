@@ -38,14 +38,6 @@ class nginx {
 	    source => 'puppet:///modules/nginx/127.0.0.1',
 	}
 
-	# Add discz static url configure
-        file { '/etc/nginx/discuz.conf':
-            ensure => file,
-            source => 'puppet:///modules/nginx/discuz.conf',
-	    require => Package['nginx'],
-	    notify => Service['nginx'],
-        }
-
 	# Disable default nginx vhost
 	file { 'disable-nginx-default-site':
 	    path => '/etc/nginx/sites-enabled/default',
